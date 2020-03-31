@@ -9,22 +9,24 @@ const encoding = 'UTF8'
  */
 const readFileContent = (dir) => {
     var dataContent = []
-    fs.readFile(dir, encoding, (err, data) => {
-        if (err) {
-            console.err(err.message)
-            throw err
-        } else {
-            dataContent = separateData(data)
-            return dataContent
-        }
-    })
+    var fileContent
+
+    try {
+        fileContent = fs.readFileSync(dir, encoding)
+        dataContent = separateData(fileContent)
+    } catch (err) {
+        console.err(err.message)
+        throw err
+    } finally {
+        return dataContent
+    }
 }
 
 /**
  * 
- * @param {data} data Conteúdo lido de um arquivo.
- * 
  * Retorna-se o conteúdo separado em linhas dentro de uma estrutura array.
+ * 
+ * @param {data} data Conteúdo lido de um arquivo.
  */
 const separateData = (data) => {
     let arrContent = []
@@ -33,7 +35,6 @@ const separateData = (data) => {
     for (line in tempBuffer)
         arrContent.push(tempBuffer[line])
 
-    console.table(arrContent)
     return arrContent
 }
 

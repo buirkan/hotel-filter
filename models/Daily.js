@@ -1,4 +1,4 @@
-export class Daily {
+class Daily {
     constructor(dayNumber, month, year, weekDay) {
         this._day = dayNumber
         this._month = month
@@ -6,3 +6,5 @@ export class Daily {
         this._weekDay = weekDay
     }
 }
+
+module.exports = Daily

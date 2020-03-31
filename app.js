@@ -1,8 +1,27 @@
 const readFileContent = require('./controllers/fileController').readFileContent
+const hotelController = require('./controllers/hotelController')
+const userController = require('./controllers/userController')
+const config = require('./config/hotel.config')
 
 const path = 'data/example.txt'
 
-readFileContent(path)
+/* ------- Inicializando configuração dos hotéis ------- */
+const lakewoodHotel = hotelController.createHotel(config.LAKEWOOD)
+const bridgewoodHotel = hotelController.createHotel(config.BRIDGEWOOD)
+const ridgewoodHotel = hotelController.createHotel(config.RIDGEWOOD)
+
+/* ------- Lendo conteúdo de entrada ------- */
+const usersEntries = readFileContent(path)
+
+usersEntries.map(user => {
+    const matchUserType = /([A-Z])\w+:/gi
+    const userType = matchUserType.exec(user)[0].replace(/\:/, '').trim()
+    let days = user.replace(userType, '').trim().split(',')
+
+    days = days.map(day => day.replace(':', '').trim())
+    userController.createUser(userType, days)
+})
+
 
 /*
  *
