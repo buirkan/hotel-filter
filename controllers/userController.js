@@ -1,5 +1,6 @@
 const dailyController = require('./DailyController')
 const userTypes = require('../models/User').CATEGORIES
+const User = require('../models/User').User
 
 const checkCategory = (category) => {
     if (category === userTypes.REGULAR.toLowerCase())
@@ -12,7 +13,13 @@ const checkCategory = (category) => {
 
 const createUser = (userCategory, daysInHotel) => {
     const userType = checkCategory(userCategory.toLowerCase())
-    daysInHotel.map(day => dailyController.createData(day))
+
+    const days = daysInHotel.map(day => {
+        /* --- Objeto da data com informações separadas --- */
+        const userDailyDate = dailyController.createDailyData(day)
+        return userDailyDate
+    })
+    return new User(userType, days)
 }
 
 module.exports = { createUser }

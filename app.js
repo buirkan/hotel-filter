@@ -5,21 +5,23 @@ const config = require('./config/hotel.config')
 
 const path = 'data/example.txt'
 
-/* ------- Inicializando configuração dos hotéis ------- */
+/* --- Inicializando configuração dos hotéis --- */
 const lakewoodHotel = hotelController.createHotel(config.LAKEWOOD)
 const bridgewoodHotel = hotelController.createHotel(config.BRIDGEWOOD)
 const ridgewoodHotel = hotelController.createHotel(config.RIDGEWOOD)
 
-/* ------- Lendo conteúdo de entrada ------- */
+/* --- Lendo conteúdo de entrada --- */
 const usersEntries = readFileContent(path)
 
-usersEntries.map(user => {
+usersEntries.map(entry => {
     const matchUserType = /([A-Z])\w+:/gi
-    const userType = matchUserType.exec(user)[0].replace(/\:/, '').trim()
-    let days = user.replace(userType, '').trim().split(',')
+    const userType = matchUserType.exec(entry)[0].replace(/\:/, '').trim()
+    let days = entry.replace(userType, '').trim().split(',')
 
     days = days.map(day => day.replace(':', '').trim())
-    userController.createUser(userType, days)
+
+    let user = userController.createUser(userType, days)
+    console.log(user)
 })
 
 
