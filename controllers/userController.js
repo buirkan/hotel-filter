@@ -1,4 +1,4 @@
-const dailyController = require('./DailyController')
+const dailyController = require('./dailyController')
 const userTypes = require('../models/User').CATEGORIES
 const User = require('../models/User').User
 
@@ -8,17 +8,12 @@ const checkCategory = (category) => {
     else if (category === userTypes.REWARD.toLowerCase())
         return userTypes.REWARD
     else
-        throw new Error('Tipo de cliente inválido!')
+        throw new Error('Categoria de cliente inválida!')
 }
 
 const createUser = (userCategory, daysInHotel) => {
     const userType = checkCategory(userCategory.toLowerCase())
-
-    const days = daysInHotel.map(day => {
-        /* --- Objeto da data com informações separadas --- */
-        const userDailyDate = dailyController.createDailyData(day)
-        return userDailyDate
-    })
+    const days = daysInHotel.map(day => dailyController.createDailyData(day))
     return new User(userType, days)
 }
 

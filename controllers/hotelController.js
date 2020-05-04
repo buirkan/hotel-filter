@@ -9,7 +9,6 @@ const Rate = require('../models/Rate')
 const createHotel = (config) => {
     const { name, stars } = config
     const { weekRate, weekRateReward, weekendRate, weekendRateReward } = config
-
     const hotelWeekRate = new Rate(weekRate, weekRateReward)
     const hotelWeekendRate = new Rate(weekendRate, weekendRateReward)
 
