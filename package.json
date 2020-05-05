@@ -1,0 +1,17 @@
+{
+  "name": "problems-test-exercises",
+  "version": "1.0.0",
+  "description": "A project to choose the better option on the hotels dailies",
+  "main": "app.js",
+  "repository": "https://github.com/FelipeAlvesSilva/problems-test-exercises",
+  "bugs": "https://github.com/FelipeAlvesSilva/problems-test-exercises/issues",
+  "author": {
+    "name": "Felipe Silva",
+    "email": "felipealvessilva64@gmail.com"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "node ./tests/index.js"
+  },
+  "license": "MIT"
+}

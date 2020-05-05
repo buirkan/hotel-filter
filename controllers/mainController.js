@@ -1,4 +1,6 @@
 const CATEGORIES = require('../util/userCategories')
+const CHECK_MARK = require('../util/styles').CHECK_MARK
+const CIANO_MARK = require('../util/styles').CIANO_MARK
 
 /**
  * Calcula e retorna qual o hotel da rede que se torna mais em conta para as diárias do cliente
@@ -9,10 +11,12 @@ const chooseBetterOption = (userEntries) => {
     const betterHotel = userEntries.reduce((previous, current) => previous.rateSum < current.rateSum ? previous : current)
     const formattedValue = `${Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(betterHotel.rateSum)}`
 
-    console.log('----- Abaixo está a melhor escolha para a sua hospedagem! -----')
-    console.log(`\nMelhor Hotel: ${betterHotel.hotel.getName()}`)
-    console.log(`Classificação: ${betterHotel.hotel.getClassification()} Estrelas`)
-    console.log(`Gasto total com as suas diárias: ${formattedValue}\n\n`)
+    console.log(CIANO_MARK.p, '----- Abaixo está a melhor escolha para a sua hospedagem! -----')
+    console.log(CHECK_MARK.p, `Melhor Hotel: ${betterHotel.hotel.getName()}`)
+    console.log(CHECK_MARK.p, `Classificação: ${betterHotel.hotel.getClassification()} Estrelas`)
+    console.log(CHECK_MARK.p, `Gasto total com as suas diárias: ${formattedValue}\n\n`)
+
+    return betterHotel
 }
 
 /**
@@ -44,7 +48,7 @@ const betterHotelOption = (user, hotels) => {
         hotelPrices.push({ hotel, rateSum })
     })
     /* ----- Calcula e apresenta a mensagem para o usuário da melhor escolha ----- */
-    chooseBetterOption(hotelPrices)
+    return chooseBetterOption(hotelPrices)
 }
 
-module.exports = { betterHotelOption }
+module.exports = { betterHotelOption, chooseBetterOption }

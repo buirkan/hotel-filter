@@ -29,10 +29,11 @@ const createDailyData = (daily) => {
 
     const dayDate = new Date(`${discoverMonth(monResult)} ${Number.parseInt(dayResult)}, ${Number.parseInt(yeaResult)}`)
     const weekDay = (dayDate.getDay() !== 6 || dayDate.getDay() !== 0) ? true : false
-    
+
     return { dayDate, weekDay }
 }
 
 module.exports = {
-    createDailyData
+    createDailyData,
+    discoverMonth
 }

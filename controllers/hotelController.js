@@ -4,7 +4,7 @@ const Rate = require('../models/Rate')
 /**
  * Cria a instância de um hotel de acordo com a configuração passada por parâmetro.
  * 
- * @param config Configuração de parâmetros estáticos de um hotel. 
+ * @param {Object} config Configuração de parâmetros estáticos de um hotel. 
  */
 const createHotel = (config) => {
     const { name, stars } = config

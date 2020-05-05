@@ -1,5 +1,6 @@
 const Daily = require('./Daily')
 const CATEGORIES = require('../util/userCategories')
+
 class User {
     /**
      * Cria a instância de um usuário
