@@ -3,7 +3,7 @@ const months = require('../util/months').Months
 /**
  * Método que filtra o mês pelo prefixo do nome, e retorna o nome por completo
  * 
- * @param {*} monthPrefix Nome do mês. **Ex: Mon, Feb...**
+ * @param {String} monthPrefix Nome do mês. **Ex: Mon, Feb...**
  */
 const discoverMonth = (monthPrefix) => {
     return months.filter(m => m.month.includes(monthPrefix))[0].month
@@ -13,7 +13,7 @@ const discoverMonth = (monthPrefix) => {
  * Cria a instância de uma diária, separando os dados de acordo com o arquivo de entrada, e
  * retorna a instância da diária no formato de uma data e também se a mesma se encontra em um dia da semana
  * 
- * @param {*} daily A diária não formatada, assim como no arquivo de entrada 
+ * @param {String} daily A diária não formatada, assim como no arquivo de entrada 
  */
 const createDailyData = (daily) => {
     const rxpPatterns = {

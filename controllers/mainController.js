@@ -5,7 +5,7 @@ const CIANO_MARK = require('../util/styles').CIANO_MARK
 /**
  * Calcula e retorna qual o hotel da rede que se torna mais em conta para as diárias do cliente
  * 
- * @param {*} userEntries Somatório de todas as diárias do cliente em cada hotel da rede
+ * @param {Array} userEntries Somatório de todas as diárias do cliente em cada hotel da rede
  */
 const chooseBetterOption = (userEntries) => {
     const betterHotel = userEntries.reduce((previous, current) => previous.rateSum < current.rateSum ? previous : current)
@@ -23,8 +23,8 @@ const chooseBetterOption = (userEntries) => {
  * Método que calcula o gasto total do cliente e o infoma sobre qual a melhor opção para as suas 
  * escolhas de diárias, levando em consideração o seu plano de fidelidade com a rede de hotéis
  * 
- * @param {*} user Cliente que contém suas diárias desejadas.
- * @param {*} hotels Hoteis disponíveis da rede para o cliente. 
+ * @param {Object} user Cliente que contém suas diárias desejadas.
+ * @param {Array} hotels Hoteis disponíveis da rede para o cliente. 
  */
 const betterHotelOption = (user, hotels) => {
     const userType = user.getType()

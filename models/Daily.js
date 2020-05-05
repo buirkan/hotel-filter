@@ -1,10 +1,11 @@
 class Daily {
     /**
      * Cria a instância de uma diária de um cliente no Hotel
-     * @param {*} dayNumber O dia da semana da diária
-     * @param {*} month O mês da diária
-     * @param {*} year O ano da diária
-     * @param {*} weekDay O valor que identifica se a diária é um dia da semana ou não
+     * 
+     * @param {String} dayNumber O dia da semana da diária
+     * @param {String} month O mês da diária
+     * @param {String} year O ano da diária
+     * @param {String} weekDay O valor que identifica se a diária é um dia da semana ou não
      */
     constructor(dayNumber, month, year, weekDay) {
         this._day = dayNumber

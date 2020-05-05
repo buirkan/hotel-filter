@@ -2,10 +2,10 @@ class Hotel {
     /**
      * Cria uma instância de um hotel da rede de acordo com as suas configurações
      * 
-     * @param {*} name Nome do hotel 
-     * @param {*} classification Classificação do Hotel em estrelas
-     * @param {*} weekRate Taxa do hotel nos dias de semanas 
-     * @param {*} weekendRate Taxa do hotel nos finais de semanas
+     * @param {String} name Nome do hotel 
+     * @param {Number} classification Classificação do Hotel em estrelas
+     * @param {Object} weekRate Taxa do hotel nos dias de semanas 
+     * @param {Object} weekendRate Taxa do hotel nos finais de semanas
      */
     constructor(name, classification, weekRate, weekendRate) {
         this._name = name
